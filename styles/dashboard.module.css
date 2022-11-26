@@ -1,0 +1,209 @@
+.bg-dashboard {
+  background-size: cover;
+  background-image: url(/asset/bg-db.jpeg);
+}
+.dash_title {
+  font-size: 80px;
+  font-weight: 700;
+  margin-top: 900px;
+  color: white;
+}
+
+.game-preview {
+  height: 400px;
+  width: 800px;
+  margin-top: 120px;
+}
+
+.db_title {
+  margin-top: -260px;
+  margin-left: 50px;
+}
+
+.db_subtitle {
+  margin-top: -210px;
+  margin-left: 50px;
+}
+
+.db_btn-play {
+  margin-top: -100px;
+  margin-left: 50px;
+}
+
+.gl_1 {
+  background-color: black;
+  height: 210px;
+  width: 166px;
+}
+
+.hide {
+  display: none;
+}
+
+.pacman {
+  width: auto;
+  height: 130px;
+  transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/asset/pacman.png);
+  background-position: center;
+  background-size: cover;
+}
+.pacman p {
+  opacity: 0;
+  transform: scale(0);
+  transition: 0.8s;
+  color: white;
+}
+
+.pacman:hover {
+  box-shadow: 0 0 0 200px rgba(0, 0, 0, 0.7) inset;
+  cursor: pointer;
+}
+
+.pacman:hover p {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sinvader {
+  width: auto;
+  height: 130px;
+  transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/asset/spaceinvader.png);
+  background-position: center;
+  background-size: cover;
+}
+.sinvader p {
+  opacity: 0;
+  transform: scale(0);
+  transition: 0.8s;
+  color: white;
+}
+
+.sinvader:hover {
+  box-shadow: 0 0 0 200px rgba(0, 0, 0, 0.7) inset;
+  cursor: pointer;
+}
+
+.sinvader:hover p {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.plane {
+  width: auto;
+  height: 130px;
+  transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/asset/1942.png);
+  background-position: center;
+  background-size: cover;
+}
+.plane p {
+  opacity: 0;
+  transform: scale(0);
+  transition: 0.8s;
+  color: white;
+}
+
+.plane:hover {
+  box-shadow: 0 0 0 200px rgba(0, 0, 0, 0.7) inset;
+  cursor: pointer;
+}
+
+.plane:hover p {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.punchout {
+  width: auto;
+  height: 130px;
+  transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/asset/punchout.png);
+  background-position: center;
+  background-size: cover;
+}
+.punchout p {
+  opacity: 0;
+  transform: scale(0);
+  transition: 0.8s;
+  color: white;
+}
+
+.punchout:hover {
+  box-shadow: 0 0 0 200px rgba(0, 0, 0, 0.7) inset;
+  cursor: pointer;
+}
+
+.punchout:hover p {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.outrun {
+  width: auto;
+  height: 130px;
+  transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/asset/outrun.png);
+  background-position: center;
+  background-size: cover;
+}
+.outrun p {
+  opacity: 0;
+  transform: scale(0);
+  transition: 0.8s;
+  color: white;
+}
+
+.outrun:hover {
+  box-shadow: 0 0 0 200px rgba(0, 0, 0, 0.7) inset;
+  cursor: pointer;
+}
+
+.outrun:hover p {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cadillacs {
+  width: auto;
+  height: 130px;
+  transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/asset/cadillacs.png);
+  background-position: center;
+  background-size: cover;
+}
+.cadillacs p {
+  opacity: 0;
+  transform: scale(0);
+  transition: 0.8s;
+  color: white;
+}
+
+.cadillacs:hover {
+  box-shadow: 0 0 0 200px rgba(0, 0, 0, 0.7) inset;
+  cursor: pointer;
+}
+
+.cadillacs:hover p {
+  opacity: 1;
+  transform: scale(1);
+}
