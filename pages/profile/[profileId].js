@@ -18,12 +18,12 @@ const Profile = () => {
   });
 
   useEffect(() => {
-    // axios
-    //   .get("/user/profile/" + userId, { headers: { Authorization: token } })
-    //   .then((user) => {
-    //     setUser(user.data.data);
-    //   })
-    //   .catch((err) => navigate("/login"));
+    axios
+      .get("/user/profile/" + userId, { headers: { Authorization: token } })
+      .then((user) => {
+        setUser(user.data.data);
+      })
+      .catch((err) => navigate("/login"));
   }, []);
 
   return (
