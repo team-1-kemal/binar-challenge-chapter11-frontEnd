@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-// import "./Profile.css";
-// import { useNavigate, useParams } from "react-router-dom";
 import axios from "../api/axios";
 
 const Profile = () => {
@@ -11,20 +9,26 @@ const Profile = () => {
 
   const [user, setUser] = useState({});
   const [token, setToken] = useState("");
+  const [id, setId] = useState("");
   const history = user.GameHistories;
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-  });
+    const getToken = localStorage.getItem("token");
+    const getId = localStorage.getItem("id");
+    setId(getId);
+    setToken(getToken);
+  }, [userId]);
 
   useEffect(() => {
+    if (!router.isReady) return;
+    console.log(userId);
     axios
       .get("/user/profile/" + userId, { headers: { Authorization: token } })
       .then((user) => {
         setUser(user.data.data);
       })
-      .catch((err) => navigate("/login"));
-  }, []);
+      .catch((err) => console.log(err));
+  }, [router.isReady]);
 
   return (
     <>
@@ -59,7 +63,7 @@ const Profile = () => {
               </div>
             </span>
           </div>
-          <a href={"/edit/" + userId}>
+          <a href={"/edit/" + id}>
             <button className="absolute inline-block px-2 py-1 ml-[105px] md:ml-[255px] mt-[-70px] group  ">
               <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
               <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
