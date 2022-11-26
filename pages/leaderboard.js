@@ -13,28 +13,16 @@ const Board = () => {
             <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-gray-900 group-hover:-rotate-180 ease"></span>
             <span className="relative">Home</span>
           </span>
-          <span
-            className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-900 rounded-lg group-hover:mb-0 group-hover:mr-0"
-            data-rounded="rounded-lg"
-          ></span>
+          <span className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-900 rounded-lg group-hover:mb-0 group-hover:mr-0" data-rounded="rounded-lg"></span>
         </div>
       </a>
       <div className=" justify-center text-center">
         <br />
-        <img
-          src="/asset/logo-game.png"
-          alt="logo"
-          className=" w-[60px] md:w-[120px] absolute right-2"
-        />
-        <h1 className="leaderboard board-title text-2xl  font-semibold">
-          Leaderboard
-        </h1>
+        <img src="/asset/logo-game.png" alt="logo" className=" w-[60px] md:w-[120px] absolute right-2" />
+        <h1 className="leaderboard board-title text-2xl  font-semibold">Leaderboard</h1>
 
         <div className="duration all-time">
-          <div
-            data-id="0"
-            className="button mr-5 w-28 mt-5 ml-3 relative inline-block px-4 py-2 font-medium group"
-          >
+          <div data-id="0" className="button mr-5 w-28 mt-5 ml-3 relative inline-block px-4 py-2 font-medium group">
             <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black "></span>
             <span className="absolute inset-0 w-full h-full bg-white border-2 border-black "></span>
             <span className="relative text-black text-lg ">All-Time</span>
