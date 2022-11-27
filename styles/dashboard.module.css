@@ -41,7 +41,7 @@
 }
 
 .pacman {
-  width: auto;
+  width: 100px;
   height: 130px;
   transition: 0.5s;
   display: flex;
@@ -60,7 +60,6 @@
 
 .pacman:hover {
   box-shadow: 0 0 0 200px rgba(0, 0, 0, 0.7) inset;
-  cursor: pointer;
 }
 
 .pacman:hover p {
@@ -69,7 +68,7 @@
 }
 
 .sinvader {
-  width: auto;
+  width: 100px;
   height: 130px;
   transition: 0.5s;
   display: flex;
@@ -97,7 +96,7 @@
 }
 
 .plane {
-  width: auto;
+  width: 100px;
   height: 130px;
   transition: 0.5s;
   display: flex;
@@ -125,7 +124,7 @@
 }
 
 .punchout {
-  width: auto;
+  width: 100px;
   height: 130px;
   transition: 0.5s;
   display: flex;
@@ -153,7 +152,7 @@
 }
 
 .outrun {
-  width: auto;
+  width: 100px;
   height: 130px;
   transition: 0.5s;
   display: flex;
@@ -181,7 +180,7 @@
 }
 
 .cadillacs {
-  width: auto;
+  width: 100px;
   height: 130px;
   transition: 0.5s;
   display: flex;

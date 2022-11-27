@@ -65,9 +65,9 @@ const Login = () => {
           />
           <div className="flex lg:mt-[30px]">
             <div className=" flex justify-center items-center">
-              <div class="absolute w-[300px] h-[400px] lg:w-[400px] lg:h-[500px] font-medium group">
-                <span class="absolute  w-full h-full transform translate-x-1 translate-y-1 bg-black"></span>
-                <span class="absolute  w-full h-full bg-slate-400 border-2 border-black "></span>
+              <div className="absolute w-[300px] h-[400px] lg:w-[400px] lg:h-[500px] font-medium group">
+                <span className="absolute  w-full h-full transform translate-x-1 translate-y-1 bg-black"></span>
+                <span className="absolute  w-full h-full bg-slate-400 border-2 border-black "></span>
               </div>
               <div className="absolute mt-[-120px]">
                 <p
