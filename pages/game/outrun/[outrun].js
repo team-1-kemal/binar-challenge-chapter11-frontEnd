@@ -1,7 +1,7 @@
 import React from "react";
 
 const Outrun = () => {
-  return <div>Outrun</div>;
+  return <div>Hello World</div>;
 };
 
 export default Outrun;
