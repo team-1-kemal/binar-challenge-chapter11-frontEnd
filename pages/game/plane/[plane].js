@@ -1,7 +1,7 @@
 import React from "react";
 
 const Warplane = () => {
-  return <div>Warplane</div>;
+  return <div>Hello World</div>;
 };
 
 export default Warplane;
