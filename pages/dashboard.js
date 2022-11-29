@@ -64,7 +64,7 @@ const Dashboard = () => {
           src="/asset/logo-gn.png"
           alt="logo"
         />
-        <div className="flex gap-[50px] md:ml-[70px]">
+        <div className="flex gap-[50px] md:ml-[70px] lg:ml-[160px]">
           <a
             href={"/profile/" + userId}
             className="text-black text-sm md:text-lg"
