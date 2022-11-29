@@ -39,7 +39,6 @@ const Profile = () => {
     <>
       <Head>
         <title>Game Nation - {user.full_name}</title>
-        <meta name="description" content="Profile Page" />
       </Head>
       <a href="/dashboard">
         <div className="absolute inline-block text-sm group mt-5 ml-5">
