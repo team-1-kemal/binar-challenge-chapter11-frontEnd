@@ -23,9 +23,7 @@ const Cadillacs = () => {
 
     let pointUser = user.point;
     pointUser += value;
-    axios
-      .put(`/game/${7}/${id}?point=${pointUser}&title=Cadillacs & Dinosaurs`)
-      .catch((err) => console.log(err));
+    axios.put(`/game/${3}/${id}?point=${pointUser}&title=CARDILLACS DINOSAURS`).catch((err) => console.log(err));
     setLoading(true);
     setHidden("");
     setTimeout(() => {
@@ -48,7 +46,6 @@ const Cadillacs = () => {
     <>
       <Head>
         <title>Game Nation - Cadillacs Dinosaurs</title>
-        <meta name="description" content="Cadillacs Page" />
       </Head>
       <a href="/dashboard">
         <div className="absolute inline-block text-sm group mt-5 ml-5">
@@ -57,61 +54,32 @@ const Cadillacs = () => {
             <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-yellow-400 group-hover:-rotate-180 ease"></span>
             <span className="relative ">Home</span>
           </span>
-          <span
-            className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-600 rounded-lg group-hover:mb-0 group-hover:mr-0"
-            data-rounded="rounded-lg"
-          ></span>
+          <span className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-600 rounded-lg group-hover:mb-0 group-hover:mr-0" data-rounded="rounded-lg"></span>
         </div>
       </a>
       <section className="flex items-center justify-center bg-[url('/asset/bg-cadillacs.png')] min-h-screen bg-cover bg-center">
         <div className="flex flex-col h-[400px] items-center text-center mb-[280px]">
-          <img
-            src="/asset/logo-cadillacs.png"
-            className="h-[80px] w-auto mt-[100px]"
-          />
+          <img src="/asset/logo-cadillacs.png" className="h-[80px] w-auto mt-[100px]" />
           <button
             onClick={scoreHandler}
             className="relative w-[150px] mt-[20px] inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-black rounded-full shadow-md group"
           >
             <span className="absolute inset-0 flex items-center justify-center w-full h-full text-black duration-300 -translate-x-full bg-yellow-300 group-hover:translate-x-0 ease">
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                ></path>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
               </svg>
             </span>
-            <span className="absolute flex items-center justify-center w-full h-full text-black transition-all duration-300 transform group-hover:translate-x-full ease">
-              Generate Score
-            </span>
+            <span className="absolute flex items-center justify-center w-full h-full text-black transition-all duration-300 transform group-hover:translate-x-full ease">Generate Score</span>
             <span className="relative invisible">Button Text</span>
           </button>
           {loading ? (
             <div className="mt-[50px] ml-[5px]">
-              <Loader
-                color={"#255731"}
-                loading={loading}
-                size={55}
-                aria-label="Loading Spinner"
-                data-testid="loader"
-              />
+              <Loader color={"#255731"} loading={loading} size={55} aria-label="Loading Spinner" data-testid="loader" />
               <p className="text-black mt-[10px] ml-[-5px]">Loading...</p>
             </div>
           ) : (
             <div>
-              <h2
-                className={`text-black ${hidden} font-montserrat text-base mt-[40px]`}
-              >
-                Your Score
-              </h2>
+              <h2 className={`text-black ${hidden} font-montserrat text-base mt-[40px]`}>Your Score</h2>
               <p className="text-black text-[60px]  font-pressstart">{point}</p>
             </div>
           )}

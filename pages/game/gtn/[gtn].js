@@ -47,9 +47,7 @@ const Gtn = () => {
     } else if (secretNumber == guess) {
       let pointUser = user.point;
       pointUser += score;
-      axios
-        .put(`/game/${3}/${id}?point=${pointUser}&title=GUESS THE NUMBER`)
-        .catch((err) => console.log(err));
+      axios.put(`/game/${7}/${id}?point=${pointUser}&title=GUESS THE NUMBER`).catch((err) => console.log(err));
       setNumber(secretNumber);
       control.start({
         scale: [2, 1, 1.5],
@@ -62,9 +60,7 @@ const Gtn = () => {
       setRestart("");
     } else if (guess !== secretNumber) {
       if (score > 10) {
-        guess > secretNumber
-          ? setTextResult("📈 Too high!")
-          : setTextResult("📉 Too low!");
+        guess > secretNumber ? setTextResult("📈 Too high!") : setTextResult("📉 Too low!");
         setScore(score - 10);
       } else {
         setNumber(secretNumber);
@@ -78,15 +74,9 @@ const Gtn = () => {
   };
 
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.75, ease: "easeOut" }}
-    >
+    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.75, ease: "easeOut" }}>
       <Head>
         <title>Game Nation - Guess The Number</title>
-        <meta name="description" content="Login Page" />
       </Head>
       <a href="/dashboard">
         <div className="absolute inline-block text-sm group mt-5 ml-5">
@@ -95,40 +85,20 @@ const Gtn = () => {
             <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-yellow-400 group-hover:-rotate-180 ease"></span>
             <span className="relative ">Home</span>
           </span>
-          <span
-            className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-600 rounded-lg group-hover:mb-0 group-hover:mr-0"
-            data-rounded="rounded-lg"
-          ></span>
+          <span className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-600 rounded-lg group-hover:mb-0 group-hover:mr-0" data-rounded="rounded-lg"></span>
         </div>
       </a>
-      <div
-        className={`m-0 flex flex-col items-center justify-center font-pressstart min-h-screen text-white ${bgcolor}`}
-      >
-        <img
-          src="/asset/confetti.gif"
-          className={`${confetti} absolute min-h-screen`}
-        />
+      <div className={`m-0 flex flex-col items-center justify-center font-pressstart min-h-screen text-white ${bgcolor}`}>
+        <img src="/asset/confetti.gif" className={`${confetti} absolute min-h-screen`} />
         <header className="flex flex-col relative h-[35vh] items-center">
           {/* <h1 className="pt-[60px] text-center text-2xl mb-3">
             Guess The Number!
           </h1> */}
-          <motion.img
-            src="/asset/logo-gtn.png"
-            className="h-[110px] md:h-[220px] md:mt-[-100px] mb-3 w-auto "
-            initial={{ scale: 1.5 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0 }}
-            transition={{ duration: 1.75, type: "spring" }}
-          />
-          <div className="t-[2rem] r-[2rem] text-[10px]">
-            (Between 1 and 20)
-          </div>
+          <motion.img src="/asset/logo-gtn.png" className="h-[110px] md:h-[220px] md:mt-[-100px] mb-3 w-auto " initial={{ scale: 1.5 }} animate={{ scale: 1 }} exit={{ scale: 0 }} transition={{ duration: 1.75, type: "spring" }} />
+          <div className="t-[2rem] r-[2rem] text-[10px]">(Between 1 and 20)</div>
 
           <div className="flex flex-col items-center">
-            <motion.div
-              className="relative text-center text-5xl mt-[55px] py-4 w-[100px] text-slate-800 bg-white"
-              animate={control}
-            >
+            <motion.div className="relative text-center text-5xl mt-[55px] py-4 w-[100px] text-slate-800 bg-white" animate={control}>
               {number}
             </motion.div>
             <div className="bg-white mt-[-40px] w-screen h-[10px]"></div>
@@ -136,11 +106,7 @@ const Gtn = () => {
         </header>
         <main className="flex flex-col items-center mt-[70px]">
           <section className="text-center left">
-            <input
-              type="number"
-              onChange={guessHandler}
-              className="guess w-[140px] text-3xl bg-transparent border-4 border-white p-6 text-center block mb-4"
-            />
+            <input type="number" onChange={guessHandler} className="guess w-[140px] text-3xl bg-transparent border-4 border-white p-6 text-center block mb-4" />
             <button type="submit" onClick={checkHandler} className={hidden}>
               Check!
             </button>
@@ -150,27 +116,12 @@ const Gtn = () => {
             onClick={() => reset()}
           >
             <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-black group-hover:translate-x-0 ease">
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                ></path>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
               </svg>
             </span>
-            <span className="absolute flex items-center justify-center w-full text-sm h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">
-              Restart Game
-            </span>
-            <span className="relative font-montserrat invisible">
-              Restart Game?
-            </span>
+            <span className="absolute flex items-center justify-center w-full text-sm h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Restart Game</span>
+            <span className="relative font-montserrat invisible">Restart Game?</span>
           </button>
           <section className="mt-[50px] text-center">
             <p className="">{textResult}</p>
