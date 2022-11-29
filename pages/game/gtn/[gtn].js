@@ -39,6 +39,11 @@ const Gtn = () => {
     setGuess(e.target.value);
   };
 
+  const homeHandler = (e) => {
+    e.preventDefault;
+    router.push("/dashboard");
+  };
+
   const checkHandler = () => {
     setPlayed(localStorage.setItem("played3", true));
 
@@ -78,17 +83,17 @@ const Gtn = () => {
       <Head>
         <title>Game Nation - Guess The Number</title>
       </Head>
-      <a href="/dashboard">
-        <div className="absolute inline-block text-sm group mt-5 ml-5">
-          <span className="relative z-10 block px-1 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-400 rounded-lg group-hover:text-gray-800">
-            <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
-            <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-yellow-400 group-hover:-rotate-180 ease"></span>
-            <span className="relative ">Home</span>
-          </span>
-          <span className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-600 rounded-lg group-hover:mb-0 group-hover:mr-0" data-rounded="rounded-lg"></span>
-        </div>
-      </a>
       <div className={`m-0 flex flex-col items-center justify-center font-pressstart min-h-screen text-white ${bgcolor}`}>
+        <button onClick={homeHandler} className="absolute top-0 left-0">
+          <div className="absolute inline-block text-sm group mt-5 ml-5">
+            <span className="relative z-10 block px-1 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-400 rounded-lg group-hover:text-gray-800">
+              <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
+              <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-yellow-400 group-hover:-rotate-180 ease"></span>
+              <span className="relative ">Home</span>
+            </span>
+            <span className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-600 rounded-lg group-hover:mb-0 group-hover:mr-0" data-rounded="rounded-lg"></span>
+          </div>
+        </button>
         <img src="/asset/confetti.gif" className={`${confetti} absolute min-h-screen`} />
         <header className="flex flex-col relative h-[35vh] items-center">
           {/* <h1 className="pt-[60px] text-center text-2xl mb-3">

@@ -52,10 +52,6 @@ const Register = () => {
     userRef.current.focus();
   }, []);
 
-  // useEffect(() => {
-  //   setSuccess(true);
-  // }, []);
-
   useEffect(() => {
     const result = TEXT_REGEX.test(fullName);
     setValidFullName(result);
