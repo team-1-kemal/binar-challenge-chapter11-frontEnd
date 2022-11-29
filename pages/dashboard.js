@@ -12,6 +12,13 @@ const Dashboard = () => {
     localStorage.removeItem("name");
     localStorage.removeItem("id");
     localStorage.removeItem("token");
+    localStorage.removeItem("played1");
+    localStorage.removeItem("played2");
+    localStorage.removeItem("played3");
+    localStorage.removeItem("played4");
+    localStorage.removeItem("played5");
+    localStorage.removeItem("played6");
+    localStorage.removeItem("played7");
     navigate.push("/");
   };
   const [username, setUsername] = useState("");
@@ -56,7 +63,6 @@ const Dashboard = () => {
     >
       <Head>
         <title>Game Nation - Dashboard</title>
-        <meta name="description" content="Dashboard Page" />
       </Head>
       <div className="flex text-sm font-semibold justify-between items-center md:px-10">
         <img
