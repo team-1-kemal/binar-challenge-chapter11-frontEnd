@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import styles from "../styles/dashboard.module.css";
 import cx from "classnames";
 import ButtonPlay from "../components/ButtonPlay";
+import Head from "next/head";
+import { motion } from "framer-motion";
 
 const Dashboard = () => {
   const navigate = useRouter();
@@ -10,28 +12,65 @@ const Dashboard = () => {
     localStorage.removeItem("name");
     localStorage.removeItem("id");
     localStorage.removeItem("token");
+    localStorage.removeItem("played1");
+    localStorage.removeItem("played2");
+    localStorage.removeItem("played3");
+    localStorage.removeItem("played4");
+    localStorage.removeItem("played5");
+    localStorage.removeItem("played6");
+    localStorage.removeItem("played7");
     navigate.push("/");
   };
   const [username, setUsername] = useState("");
   const [userId, setUserId] = useState("");
+  const [userPlayed1, setUserPlayed1] = useState();
+  const [userPlayed2, setUserPlayed2] = useState();
+  const [userPlayed3, setUserPlayed3] = useState();
+  const [userPlayed4, setUserPlayed4] = useState();
+  const [userPlayed5, setUserPlayed5] = useState();
+  const [userPlayed6, setUserPlayed6] = useState();
+  const [userPlayed7, setUserPlayed7] = useState();
 
   useEffect(() => {
     const nameValue = localStorage.getItem("name");
     const idValue = localStorage.getItem("id");
+    const played1Value = localStorage.getItem("played1");
+    const played2Value = localStorage.getItem("played2");
+    const played3Value = localStorage.getItem("played3");
+    const played4Value = localStorage.getItem("played4");
+    const played5Value = localStorage.getItem("played5");
+    const played6Value = localStorage.getItem("played6");
+    const played7Value = localStorage.getItem("played7");
     setUsername(nameValue);
     setUserId(idValue);
+    setUserPlayed1(played1Value);
+    setUserPlayed2(played2Value);
+    setUserPlayed3(played3Value);
+    setUserPlayed4(played4Value);
+    setUserPlayed5(played5Value);
+    setUserPlayed6(played6Value);
+    setUserPlayed7(played7Value);
 
     console.log(username, userId);
   }, [username, userId]);
   return (
-    <section className=" bg-[url('/asset/bg-db.jpeg')] min-h-screen bg-cover bg-center">
+    <motion.section
+      className=" bg-[url('/asset/bg-db.jpeg')] min-h-screen bg-cover bg-center"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+    >
+      <Head>
+        <title>Game Nation - Dashboard</title>
+      </Head>
       <div className="flex text-sm font-semibold justify-between items-center md:px-10">
         <img
           className="w-[60px] md:w-[100px]"
           src="/asset/logo-gn.png"
           alt="logo"
         />
-        <div className="flex gap-[50px] md:">
+        <div className="flex gap-[50px] md:ml-[70px] lg:ml-[160px]">
           <a
             href={"/profile/" + userId}
             className="text-black text-sm md:text-lg"
@@ -43,8 +82,8 @@ const Dashboard = () => {
             Leaderboard
           </a>
         </div>
-        <div className="flex md:mt-4">
-          <p className="absolute invisible text-center font-bold md:relative md:visible md:text-lg pr-4">
+        <div className="flex md:mt-4 pr-2 md:pr-0">
+          <p className="absolute invisible text-center font-bold md:mr-3 md:relative md:visible md:text-lg">
             Welcome, {username}
           </p>
           <button
@@ -82,7 +121,12 @@ const Dashboard = () => {
               <br />
               our leaderboard!
             </p>
-            <ButtonPlay nameGame="rps" id={userId} />
+            <ButtonPlay
+              addClass="md:py-3"
+              isPlayed={userPlayed1}
+              nameGame="rps"
+              id={userId}
+            />
           </div>
         </div>
 
@@ -90,8 +134,22 @@ const Dashboard = () => {
           <h2 className="text-white text-center font-bold md:text-xl ">
             Upcoming Games
           </h2>
-          <div className=" mt-[20px] overflow-auto md:overflow-hidden">
+          <div className=" mt-[20px]  overflow-auto md:overflow-hidden">
             <div className=" relative flex item-center gap-6">
+              <div
+                className={cx([
+                  styles.gtn,
+                  "hover:scale-105 ease-in-out duration-300",
+                ])}
+              >
+                <p className="font-bold text-2xl text-center w-[100px]">
+                  <ButtonPlay
+                    isPlayed={userPlayed3}
+                    nameGame="gtn"
+                    id={userId}
+                  />
+                </p>
+              </div>
               <div
                 className={cx([
                   styles.pacman,
@@ -99,7 +157,11 @@ const Dashboard = () => {
                 ])}
               >
                 <p className="font-bold text-2xl text-center w-[100px]">
-                  <ButtonPlay nameGame="pacman" id={userId} />
+                  <ButtonPlay
+                    isPlayed={userPlayed2}
+                    nameGame="pacman"
+                    id={userId}
+                  />
                 </p>
               </div>
 
@@ -110,18 +172,11 @@ const Dashboard = () => {
                 ])}
               >
                 <p className="font-bold text-2xl text-center w-[100px]">
-                  <ButtonPlay nameGame="sinvader" id={userId} />
-                </p>
-              </div>
-
-              <div
-                className={cx([
-                  styles.plane,
-                  "hover:scale-105 ease-in-out duration-300",
-                ])}
-              >
-                <p className="font-bold text-2xl text-center w-[100px]">
-                  <ButtonPlay nameGame="plane" id={userId} />
+                  <ButtonPlay
+                    isPlayed={userPlayed4}
+                    nameGame="sinvader"
+                    id={userId}
+                  />
                 </p>
               </div>
 
@@ -132,7 +187,11 @@ const Dashboard = () => {
                 ])}
               >
                 <p className="font-bold text-2xl text-center w-[100px]">
-                  <ButtonPlay nameGame="punchout" id={userId} />
+                  <ButtonPlay
+                    isPlayed={userPlayed5}
+                    nameGame="punchout"
+                    id={userId}
+                  />
                 </p>
               </div>
 
@@ -143,7 +202,11 @@ const Dashboard = () => {
                 ])}
               >
                 <p className="font-bold text-2xl text-center w-[100px]">
-                  <ButtonPlay nameGame="outrun" id={userId} />
+                  <ButtonPlay
+                    isPlayed={userPlayed6}
+                    nameGame="outrun"
+                    id={userId}
+                  />
                 </p>
               </div>
 
@@ -154,14 +217,18 @@ const Dashboard = () => {
                 ])}
               >
                 <p className="font-bold text-2xl text-center w-[100px]">
-                  <ButtonPlay nameGame="cadillacs" id={userId} />
+                  <ButtonPlay
+                    isPlayed={userPlayed7}
+                    nameGame="cadillacs"
+                    id={userId}
+                  />
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
