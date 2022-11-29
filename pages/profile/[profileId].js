@@ -101,8 +101,8 @@ const Profile = () => {
                 {!history ? (
                   <h3 className="text-center">No Record</h3>
                 ) : (
-                  <table className="w-full text-sm text-left text-gray-500  text-gray-400 mt-3">
-                    <thead className="text-xs text-gray-700 uppercase bg-gray-50  bg-gray-700  text-gray-400 text-center">
+                  <table className="w-full text-sm text-left text-gray-500 mt-3">
+                    <thead className="text-xs uppercase   bg-gray-700  text-gray-400 text-center">
                       <tr>
                         <th scope="col" className="py-3 px-6">
                           Name
@@ -121,7 +121,7 @@ const Profile = () => {
                           return (
                             <tr
                               key={i}
-                              className="border-b bg-gray-800 border-gray-700 hover:bg-gray-50 hover:bg-gray-600"
+                              className="border-b bg-gray-800 border-gray-700  hover:bg-gray-600"
                             >
                               <th
                                 scope="row"
