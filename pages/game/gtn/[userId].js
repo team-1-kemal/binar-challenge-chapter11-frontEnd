@@ -37,7 +37,7 @@ const Gtn = () => {
       .get("/game/" + userId, { headers: { Authorization: tokenJwt } })
       .then((user) => setUser(user.data.data))
       .catch((err) => router.push("/login"));
-  }, [router.isReady, userId]);
+  }, [router.isReady, id]);
 
   const guessHandler = (e) => {
     setGuess(e.target.value);
