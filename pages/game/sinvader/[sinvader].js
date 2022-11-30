@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 
 const Sinvader = () => {
   const tokenJwt = useSelector((state) => state.jwt);
+  const { userId } = router.query;
 
   const [loading, setLoading] = useState(false);
   const [id, setId] = useState("");
@@ -31,7 +32,7 @@ const Sinvader = () => {
     let pointUser = user.point;
     pointUser += value;
     axios
-      .put(`/game/${6}/${id}?point=${pointUser}&title=SPACE INVADERS`)
+      .put(`/game/${6}/${userId}?point=${pointUser}&title=SPACE INVADERS`)
       .catch((err) => router.push("/login"));
     setLoading(true);
     setHidden("");
@@ -45,67 +46,67 @@ const Sinvader = () => {
     setId(localStorage.getItem("id"));
     if (!router.isReady) return;
     axios
-      .get("/game/" + id, { headers: { Authorization: tokenJwt } })
+      .get("/game/" + userId, { headers: { Authorization: tokenJwt } })
       .then((user) => setUser(user.data.data))
       .catch((err) => router.push("/login"));
-  }, [router.isReady, id]);
+  }, [router.isReady]);
 
   return (
     <>
       <section className="flex items-center justify-center bg-[url('/asset/bg-sinvader.png')] min-h-screen bg-cover bg-center">
-        <button onClick={homeHandler} className='absolute top-0 left-0'>
-          <div className='absolute inline-block text-sm group mt-5 ml-5'>
-            <span className='relative z-10 block px-1 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-400 rounded-lg group-hover:text-gray-800'>
-              <span className='absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50'></span>
-              <span className='absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-yellow-400 group-hover:-rotate-180 ease'></span>
-              <span className='relative '>Home</span>
+        <button onClick={homeHandler} className="absolute top-0 left-0">
+          <div className="absolute inline-block text-sm group mt-5 ml-5">
+            <span className="relative z-10 block px-1 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-400 rounded-lg group-hover:text-gray-800">
+              <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
+              <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-yellow-400 group-hover:-rotate-180 ease"></span>
+              <span className="relative ">Home</span>
             </span>
             <span
-              className='absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-600 rounded-lg group-hover:mb-0 group-hover:mr-0'
-              data-rounded='rounded-lg'
+              className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-600 rounded-lg group-hover:mb-0 group-hover:mr-0"
+              data-rounded="rounded-lg"
             ></span>
           </div>
         </button>
-        <div className='flex flex-col h-[400px] items-center text-center mb-[250px]'>
+        <div className="flex flex-col h-[400px] items-center text-center mb-[250px]">
           <img
-            src='/asset/logo-sinvader.png'
-            className='h-[80px] w-auto mt-[100px]'
+            src="/asset/logo-sinvader.png"
+            className="h-[80px] w-auto mt-[100px]"
           />
           <button
             onClick={scoreHandler}
-            className='relative w-[150px] mt-[20px] inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-white rounded-full shadow-md group'
+            className="relative w-[150px] mt-[20px] inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-white rounded-full shadow-md group"
           >
-            <span className='absolute inset-0 flex items-center justify-center w-full h-full text-black duration-300 -translate-x-full bg-yellow-300 group-hover:translate-x-0 ease'>
+            <span className="absolute inset-0 flex items-center justify-center w-full h-full text-black duration-300 -translate-x-full bg-yellow-300 group-hover:translate-x-0 ease">
               <svg
-                className='w-6 h-6'
-                fill='none'
-                stroke='currentColor'
-                viewBox='0 0 24 24'
-                xmlns='http://www.w3.org/2000/svg'
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth='2'
-                  d='M14 5l7 7m0 0l-7 7m7-7H3'
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
                 ></path>
               </svg>
             </span>
-            <span className='absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease'>
+            <span className="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">
               Generate Score
             </span>
-            <span className='relative invisible'>Button Text</span>
+            <span className="relative invisible">Button Text</span>
           </button>
           {loading ? (
-            <div className='mt-[50px] ml-[5px]'>
+            <div className="mt-[50px] ml-[5px]">
               <Loader
                 color={"#ffff32"}
                 loading={loading}
                 size={55}
-                aria-label='Loading Spinner'
-                data-testid='loader'
+                aria-label="Loading Spinner"
+                data-testid="loader"
               />
-              <p className='text-white mt-[10px] ml-[-5px]'>Loading...</p>
+              <p className="text-white mt-[10px] ml-[-5px]">Loading...</p>
             </div>
           ) : (
             <div>
@@ -114,7 +115,7 @@ const Sinvader = () => {
               >
                 Your Score
               </h2>
-              <p className='text-white text-[60px]  font-pressstart'>{point}</p>
+              <p className="text-white text-[60px]  font-pressstart">{point}</p>
             </div>
           )}
         </div>
