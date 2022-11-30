@@ -31,7 +31,7 @@ const Profile = () => {
     if (!router.isReady) return;
     axios
       .get("/user/profile/" + profileId, {
-        headers: { Authorization: tokenJwt },
+        headers: { Authorization: tokenJwt.tokenJwt },
       })
       .then((user) => {
         setUser(user.data.data);
