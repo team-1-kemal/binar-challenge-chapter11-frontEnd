@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from "react";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
-
+import Head from "next/head";
 import axios from "../api/axios";
 
 const TEXT_REGEX = /^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*$/;
@@ -124,20 +124,29 @@ const Edit = () => {
   return (
     <>
       {success ? (
-        <section className="edit_success flex flex-col justify-center items-center min-h-screen text-[22px] bg-cover bg-[url('/asset/bg-profile.png')]">
+        <section className="edit_success flex flex-col justify-center items-center min-h-screen  text-[22px] bg-cover bg-[url('/asset/bg-profile.png')]">
+          <Head>
+            <title>Game Nation - Edit Profile</title>
+          </Head>
           <div className="relative">
-            <img src="/asset/box-register.png" alt="box" className="regis_box-success" />
-            <div className="regis_success-text flex flex-col items-center absolute">
+            <img src="/asset/box-register.png" alt="box" className="regis_box-success md:w-[400px]" />
+            <div className="mt-[-150px] ml-[65px] md:mt-[-180px] md:ml-[100px] flex flex-col items-center absolute">
               <h1>Edit Profile Success!</h1>
               <p>
                 Go to your&nbsp;
-                <a href={"/profile/" + id}>Profile</a>
+                <a className="text-white" href={"/profile/" + id}>
+                  Profile
+                </a>
               </p>
             </div>
           </div>
         </section>
       ) : (
         <section>
+          <Head>
+            <title>Game Nation - Edit Profile</title>
+            <meta name="description" content="Edit Profile Page" />
+          </Head>
           <a href="/profile/:userId">
             <div className="absolute inline-block text-sm group mt-5 ml-5">
               <span className="relative z-10 block px-2 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
