@@ -43,7 +43,7 @@ const Edit = () => {
   const [dobFocus, setDobFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState("");
+  const [success, setSuccess] = useState("true");
 
   useEffect(() => {
     // const tokenValue = localStorage.getItem("token");
