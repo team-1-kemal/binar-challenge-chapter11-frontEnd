@@ -56,7 +56,9 @@ const Edit = () => {
     userRef.current.focus();
     if (!router.isReady) return;
     axios
-      .get("/user/profile/" + userId, { headers: { Authorization: tokenJwt.tokenJwt } })
+      .get("/user/profile/" + userId, {
+        headers: { Authorization: tokenJwt.tokenJwt },
+      })
       .then((user) => {
         setUserValue(user.data.data);
       })
@@ -109,7 +111,7 @@ const Edit = () => {
     };
     axios
       .put("/user/profile/" + id, data, {
-        headers: { Authorization: tokenJwt .tokenJwt},
+        headers: { Authorization: tokenJwt.tokenJwt },
       })
       .then((response) => {
         setSuccess(true);
@@ -126,12 +128,6 @@ const Edit = () => {
       });
   };
 
-
-
-
-
-
-
   return (
     <>
       {success ? (
@@ -139,13 +135,13 @@ const Edit = () => {
           <Head>
             <title>Game Nation - Edit Profile</title>
           </Head>
-          <div className="relative">
+          <div className="relative mt-[-100px] w-[300px]">
             <img
               src="/asset/box-register.png"
               alt="box"
               className="regis_box-success md:w-[400px]"
             />
-            <div className="mt-[-150px] ml-[65px] md:mt-[-180px] md:ml-[100px] flex flex-col items-center absolute">
+            <div className="mt-[-140px] ml-[0px] md:mt-[-140px] md:ml-[0px] flex flex-col text-center justify-center items-center">
               <h1>Edit Profile Success!</h1>
               <p>
                 Go to your&nbsp;
@@ -422,3 +418,9 @@ const Edit = () => {
             </div>
           </div>
         </section>
+      )}
+    </>
+  );
+};
+
+export default Edit;

@@ -4,7 +4,7 @@ import axios from "../../api/axios";
 import Head from "next/head";
 import { motion, useAnimation } from "framer-motion";
 import { useSelector } from "react-redux";
-
+import { Press_Start_2P } from "@next/font/google"
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 const Gtn = () => {
