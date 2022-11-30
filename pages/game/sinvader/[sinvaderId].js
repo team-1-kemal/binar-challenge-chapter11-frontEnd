@@ -32,7 +32,7 @@ const Sinvader = () => {
     let pointUser = user.point;
     pointUser += value;
     axios
-      .put(`/game/${6}/${userId}?point=${pointUser}&title=SPACE INVADERS`)
+      .put(`/game/${6}/${id}?point=${pointUser}&title=SPACE INVADERS`)
       .catch((err) => router.push("/login"));
     setLoading(true);
     setHidden("");
@@ -46,7 +46,7 @@ const Sinvader = () => {
     setId(localStorage.getItem("id"));
     if (!router.isReady) return;
     axios
-      .get("/game/" + userId, { headers: { Authorization: tokenJwt } })
+      .get("/game/" + userId, { headers: { Authorization: tokenJwt.tokenJwt } })
       .then((user) => setUser(user.data.data))
       .catch((err) => router.push("/login"));
   }, [router.isReady]);

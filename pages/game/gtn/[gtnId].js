@@ -34,7 +34,7 @@ const Gtn = () => {
     setId(localStorage.getItem("id"));
     if (!router.isReady) return;
     axios
-      .get("/game/" + userId, { headers: { Authorization: tokenJwt } })
+      .get("/game/" + userId, { headers: { Authorization: tokenJwt.tokenJwt } })
       .then((user) => setUser(user.data.data))
       .catch((err) => router.push("/login"));
   }, [router.isReady]);
@@ -57,7 +57,7 @@ const Gtn = () => {
       let pointUser = user.point;
       pointUser += score;
       axios
-        .put(`/game/${7}/${userId}?point=${pointUser}&title=GUESS THE NUMBER`)
+        .put(`/game/${7}/${id}?point=${pointUser}&title=GUESS THE NUMBER`)
         .catch((err) => router.push("/login"));
       setNumber(secretNumber);
       control.start({
@@ -149,7 +149,11 @@ const Gtn = () => {
               onChange={guessHandler}
               className="guess w-[140px] text-3xl bg-transparent border-4 border-white p-6 text-center block mb-4"
             />
-            <button type="submit" onClick={checkHandler} className={hidden}>
+            <button
+              type="submit"
+              onClick={checkHandler}
+              className={`text-2xl mt-2 ${hidden}`}
+            >
               Check!
             </button>
           </section>
