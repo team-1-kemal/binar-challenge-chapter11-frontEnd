@@ -50,8 +50,6 @@ const Dashboard = () => {
     setUserPlayed5(played5Value);
     setUserPlayed6(played6Value);
     setUserPlayed7(played7Value);
-
-    console.log(username, userId);
   }, [username, userId]);
   return (
     <motion.section

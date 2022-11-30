@@ -26,13 +26,12 @@ const Profile = () => {
 
   useEffect(() => {
     if (!router.isReady) return;
-    console.log(userId);
     axios
       .get("/user/profile/" + userId, { headers: { Authorization: token } })
       .then((user) => {
         setUser(user.data.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => router.push("/login"));
   }, [router.isReady]);
 
   return (
