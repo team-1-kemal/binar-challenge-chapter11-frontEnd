@@ -24,7 +24,7 @@ const Cadillacs = () => {
     let pointUser = user.point;
     pointUser += value;
     axios
-      .put(`/game/${3}/${id}?point=${pointUser}&title=CARDILLACS DINOSAURS`)
+      .put(`/game/${3}/${id}?point=${pointUser}&title=CADILLACS DINOSAURS`)
       .catch((err) => router.push("/login"));
     setLoading(true);
     setHidden("");
