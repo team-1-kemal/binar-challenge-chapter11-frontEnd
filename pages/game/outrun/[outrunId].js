@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 const Outrun = () => {
   const tokenJwt = useSelector((state) => state.jwt);
+  const router = useRouter();
   const { userId } = router.query;
 
   const [loading, setLoading] = useState(false);
@@ -16,7 +17,6 @@ const Outrun = () => {
   const [played, setPlayed] = useState();
   const [hidden, setHidden] = useState("hidden");
   const [point, setPoint] = useState("");
-  const router = useRouter();
 
   const scoreHandler = () => {
     const value = Math.floor(Math.random() * 11) * 10;

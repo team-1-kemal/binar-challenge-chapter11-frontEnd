@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 const Cadillacs = () => {
   const tokenJwt = useSelector((state) => state.jwt);
+  const router = useRouter();
   const { userId } = router.query;
 
   const [loading, setLoading] = useState(false);
@@ -18,7 +19,6 @@ const Cadillacs = () => {
   const [hidden, setHidden] = useState("hidden");
 
   const [point, setPoint] = useState("");
-  const router = useRouter();
 
   const scoreHandler = () => {
     const value = Math.floor(Math.random() * 11) * 10;

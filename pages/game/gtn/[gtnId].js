@@ -9,6 +9,7 @@ const secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 const Gtn = () => {
   const tokenJwt = useSelector((state) => state.jwt);
+  const router = useRouter();
   const { userId } = router.query;
 
   const [id, setId] = useState("");
@@ -23,7 +24,6 @@ const Gtn = () => {
   const [hidden, setHidden] = useState("");
   const [restart, setRestart] = useState("hidden");
   const [confetti, setConfetti] = useState("hidden");
-  const router = useRouter();
   const control = useAnimation();
   const reset = () => {
     window.location.reload();

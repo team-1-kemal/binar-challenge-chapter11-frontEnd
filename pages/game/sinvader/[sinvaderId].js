@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 
 const Sinvader = () => {
   const tokenJwt = useSelector((state) => state.jwt);
+  const router = useRouter();
   const { userId } = router.query;
 
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,6 @@ const Sinvader = () => {
   const [hidden, setHidden] = useState("hidden");
 
   const [point, setPoint] = useState("");
-  const router = useRouter();
 
   const homeHandler = (e) => {
     e.preventDefault;

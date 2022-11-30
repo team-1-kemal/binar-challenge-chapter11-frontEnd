@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 const Punchout = () => {
   const tokenJwt = useSelector((state) => state.jwt);
+  const router = useRouter();
   const { userId } = router.query;
 
   const [loading, setLoading] = useState(false);
@@ -16,8 +17,6 @@ const Punchout = () => {
   const [played, setPlayed] = useState();
   const [hidden, setHidden] = useState("hidden");
   const [point, setPoint] = useState("");
-
-  const router = useRouter();
 
   const homeHandler = (e) => {
     e.preventDefault;

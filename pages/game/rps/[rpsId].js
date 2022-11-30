@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 const Game = () => {
   const tokenJwt = useSelector((state) => state.jwt);
+  const router = useRouter();
   const { userId } = router.query;
 
   const [userChoice, setUserChoice] = useState("rock");
@@ -24,7 +25,6 @@ const Game = () => {
   const control = useAnimation();
 
   const choice = ["rock", "paper", "scissors"];
-  const router = useRouter();
 
   const homeHandler = (e) => {
     e.preventDefault;

@@ -7,9 +7,9 @@ import { useSelector } from "react-redux";
 
 const Profile = () => {
   const tokenJwt = useSelector((state) => state.jwt);
-
   const router = useRouter();
   const { profileId } = router.query;
+
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({});
   // const [token, setToken] = useState("");
