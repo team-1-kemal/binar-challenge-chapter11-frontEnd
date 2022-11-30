@@ -9,6 +9,7 @@ const secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 const Gtn = () => {
   const tokenJwt = useSelector((state) => state.jwt);
+  const { userId } = router.query;
 
   const [id, setId] = useState("");
   const [user, setUser] = useState({});
@@ -27,7 +28,6 @@ const Gtn = () => {
   const reset = () => {
     window.location.reload();
   };
-  const { userId } = router.query;
 
   useEffect(() => {
     // setToken(localStorage.getItem("token"));

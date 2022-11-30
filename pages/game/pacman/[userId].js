@@ -50,7 +50,7 @@ const pacman = () => {
       .get("/game/" + userId, { headers: { Authorization: tokenJwt } })
       .then((user) => setUser(user.data.data))
       .catch((err) => router.push("/login"));
-  }, [router.isReady, id]);
+  }, [router.isReady, userId]);
 
   return (
     <>
