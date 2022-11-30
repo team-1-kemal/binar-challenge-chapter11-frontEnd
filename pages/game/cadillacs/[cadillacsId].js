@@ -28,7 +28,7 @@ const Cadillacs = () => {
     let pointUser = user.point;
     pointUser += value;
     axios
-      .put(`/game/${3}/${userId}?point=${pointUser}&title=CADILLACS DINOSAURS`)
+      .put(`/game/${3}/${id}?point=${pointUser}&title=CADILLACS DINOSAURS`)
       .catch((err) => router.push("/login"));
     setLoading(true);
     setHidden("");
@@ -47,7 +47,7 @@ const Cadillacs = () => {
     setId(localStorage.getItem("id"));
     if (!router.isReady) return;
     axios
-      .get("/game/" + userId, { headers: { Authorization: tokenJwt } })
+      .get("/game/" + userId, { headers: { Authorization: tokenJwt.tokenJwt } })
       .then((user) => setUser(user.data.data))
       .catch((err) => router.push("/login"));
   }, [router.isReady]);

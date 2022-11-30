@@ -56,7 +56,7 @@ const Edit = () => {
     userRef.current.focus();
     if (!router.isReady) return;
     axios
-      .get("/user/profile/" + userId, { headers: { Authorization: tokenJwt } })
+      .get("/user/profile/" + userId, { headers: { Authorization: tokenJwt.tokenJwt } })
       .then((user) => {
         setUserValue(user.data.data);
       })
@@ -108,8 +108,8 @@ const Edit = () => {
       dob,
     };
     axios
-      .put("/user/profile/" + userId, data, {
-        headers: { Authorization: tokenJwt },
+      .put("/user/profile/" + id, data, {
+        headers: { Authorization: tokenJwt.tokenJwt },
       })
       .then((response) => {
         setSuccess(true);

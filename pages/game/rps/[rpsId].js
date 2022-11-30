@@ -52,7 +52,7 @@ const Game = () => {
     if (!router.isReady) return;
 
     axios
-      .get("/game/" + userId, { headers: { Authorization: tokenJwt } })
+      .get("/game/" + userId, { headers: { Authorization: tokenJwt.tokenJwt } })
       .then((user) => setUser(user.data.data))
       .catch((err) => router.push("/login"));
   }, [router.isReady]);
@@ -80,7 +80,7 @@ const Game = () => {
           pointUser += 100;
           axios
             .put(
-              `/game/${1}/${userId}?point=${pointUser}&title=ROCK PAPER SCISSOR`
+              `/game/${1}/${id}?point=${pointUser}&title=ROCK PAPER SCISSOR`
             )
             .then((response) => alert("You win!"))
             .catch((err) => router.push("/login"));

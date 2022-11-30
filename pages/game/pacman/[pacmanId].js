@@ -33,7 +33,7 @@ const pacman = () => {
     let pointUser = user.point;
     pointUser += value;
     axios
-      .put(`/game/${2}/${userId}?point=${pointUser}&title=PACMAN`)
+      .put(`/game/${2}/${id}?point=${pointUser}&title=PACMAN`)
       .catch((err) => router.push("/login"));
     setLoading(true);
     setHidden("");
@@ -47,7 +47,7 @@ const pacman = () => {
     setId(localStorage.getItem("id"));
     if (!router.isReady) return;
     axios
-      .get("/game/" + userId, { headers: { Authorization: tokenJwt } })
+      .get("/game/" + userId, { headers: { Authorization: tokenJwt.tokenJwt} })
       .then((user) => setUser(user.data.data))
       .catch((err) => router.push("/login"));
   }, [router.isReady]);

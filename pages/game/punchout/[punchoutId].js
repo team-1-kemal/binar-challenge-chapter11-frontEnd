@@ -31,7 +31,7 @@ const Punchout = () => {
     let pointUser = user.point;
     pointUser += value;
     axios
-      .put(`/game/${5}/${userId}?point=${pointUser}&title=PUNCHOUT`)
+      .put(`/game/${5}/${id}?point=${pointUser}&title=PUNCHOUT`)
       .catch((err) => router.push("/login"));
     setLoading(true);
     setHidden("");
@@ -45,7 +45,7 @@ const Punchout = () => {
     setId(localStorage.getItem("id"));
     if (!router.isReady) return;
     axios
-      .get("/game/" + userId, { headers: { Authorization: tokenJwt } })
+      .get("/game/" + userId, { headers: { Authorization: tokenJwt.tokenJwt} })
       .then((user) => setUser(user.data.data))
       .catch((err) => router.push("/login"));
   }, [router.isReady]);
