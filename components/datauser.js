@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import axios from '../pages/api/axios';
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import axios from "../pages/api/axios";
 
 const Datauser = () => {
   const [data, setData] = useState([]);
-  const [token, setToken] = useState('');
+  const tokenJwt = useSelector((state) => state.jwt);
+  // const [token, setToken] = useState('');
+
+  // useEffect(() => {
+  //   setToken(localStorage.getItem('token'));
+  // });
 
   useEffect(() => {
-    setToken(localStorage.getItem('token'));
-  });
-
-  useEffect(() => {
-    if (!token) return;
+    if (!tokenJwt) return;
     axios
-      .get('/user/profile/')
+      .get("/user/profile/")
       .then((user) => {
         setData(user.data.data);
         console.log(data);
       })
       .catch((err) => console.log(err));
-  }, [token]);
+  }, [tokenJwt]);
   return (
     <div
       id='data-user'
