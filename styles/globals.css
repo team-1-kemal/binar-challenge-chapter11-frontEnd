@@ -1,5 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+@font-face {
+  font-family: "Montserrat";
+  src: url("/font/Montserrat.ttf");
+}
+@font-face {
+  font-family: "PressStart";
+  src: url("/font/PressStart2P.ttf");
+}

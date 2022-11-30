@@ -43,7 +43,7 @@ const Edit = () => {
   const [dobFocus, setDobFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState("");
+  const [success, setSuccess] = useState("true");
 
   useEffect(() => {
     // const tokenValue = localStorage.getItem("token");
@@ -135,13 +135,13 @@ const Edit = () => {
           <Head>
             <title>Game Nation - Edit Profile</title>
           </Head>
-          <div className="relative">
+          <div className="relative mt-[-100px] w-[300px]">
             <img
               src="/asset/box-register.png"
               alt="box"
               className="regis_box-success md:w-[400px]"
             />
-            <div className="mt-[-150px] ml-[65px] md:mt-[-180px] md:ml-[100px] flex flex-col items-center absolute">
+            <div className="mt-[-140px] ml-[0px] md:mt-[-140px] md:ml-[0px] flex flex-col text-center justify-center items-center">
               <h1>Edit Profile Success!</h1>
               <p>
                 Go to your&nbsp;

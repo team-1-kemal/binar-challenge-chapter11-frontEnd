@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     fontFamily: {
       montserrat: ["Montserrat", "sans-serif"],
-      pressstart: ['"Press Start 2P"', "cursive"],
+      pressstart: ["PressStart", "cursive"],
     },
     extend: {
       scale: {
