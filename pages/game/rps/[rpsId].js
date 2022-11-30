@@ -79,9 +79,13 @@ const Game = () => {
           let pointUser = user.point;
           pointUser += 100;
           axios
-            .put(
-              `/game/${1}/${id}?point=${pointUser}&title=ROCK PAPER SCISSOR`
-            )
+
+
+
+
+
+            .put(`/game/${1}/${id}?point=${pointUser}&title=ROCK PAPER SCISSOR`)
+
             .then((response) => alert("You win!"))
             .catch((err) => router.push("/login"));
         }

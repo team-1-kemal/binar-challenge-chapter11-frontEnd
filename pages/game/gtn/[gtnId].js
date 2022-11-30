@@ -149,7 +149,15 @@ const Gtn = () => {
               onChange={guessHandler}
               className="guess w-[140px] text-3xl bg-transparent border-4 border-white p-6 text-center block mb-4"
             />
-            <button type="submit" onClick={checkHandler} className={`text-2xl mt-2 ${hidden}`}>
+
+
+
+            <button
+              type="submit"
+              onClick={checkHandler}
+              className={`text-2xl mt-2 ${hidden}`}
+            >
+
               Check!
             </button>
           </section>

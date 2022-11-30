@@ -45,7 +45,11 @@ const Outrun = () => {
     setId(localStorage.getItem("id"));
     if (!router.isReady) return;
     axios
-      .get("/game/" + userId, { headers: { Authorization: tokenJwt.tokenJwt} })
+
+
+
+      .get("/game/" + userId, { headers: { Authorization: tokenJwt.tokenJwt } })
+
       .then((user) => setUser(user.data.data))
       .catch((err) => router.push("/login"));
   }, [router.isReady]);
