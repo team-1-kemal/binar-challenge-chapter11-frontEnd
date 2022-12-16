@@ -43,7 +43,7 @@ const Edit = () => {
   const [dobFocus, setDobFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState("true");
+  const [success, setSuccess] = useState("");
 
   useEffect(() => {
     // const tokenValue = localStorage.getItem("token");
@@ -53,7 +53,7 @@ const Edit = () => {
   }, [userId]);
 
   useEffect(() => {
-    userRef.current.focus();
+    userRef.current.focus(); 
     if (!router.isReady) return;
     axios
       .get("/user/profile/" + userId, {

@@ -128,7 +128,7 @@ const Gtn = () => {
             exit={{ scale: 0 }}
             transition={{ duration: 1.75, type: "spring" }}
           />
-          <div className="t-[2rem] r-[2rem] text-[10px]">
+          <div className="t-[2rem] r-[2rem] text-xl">
             (Between 1 and 20)
           </div>
 

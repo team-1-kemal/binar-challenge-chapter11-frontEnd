@@ -3,9 +3,9 @@
 @tailwind utilities;
 @font-face {
   font-family: "Montserrat";
-  src: url("/font/Montserrat.ttf");
+  src: url("/font/Montserrat");
 }
 @font-face {
   font-family: "PressStart";
-  src: url("/font/PressStart2P.ttf");
+  src: url("/font/PressStart2P");
 }

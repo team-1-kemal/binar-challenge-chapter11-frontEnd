@@ -33,7 +33,7 @@ const Datauser = () => {
           {data &&
             data.map((user, i) => (
               <div
-                className='flex justify-between md:w-[500px] mx-auto mt-0'
+                className='flex justify-between pb-3 md:w-[500px] mx-auto mt-0'
                 key={i}
               >
                 <div className=' flex items-center text-xs md:text-base'>
