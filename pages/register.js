@@ -1,14 +1,14 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from 'react';
 import {
   faCheck,
   faTimes,
   faInfoCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "./api/axios";
-import Head from "next/head";
-import Loader from "react-spinners/HashLoader";
-import { motion, AnimatePresence } from "framer-motion";
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import axios from './api/axios';
+import Head from 'next/head';
+import Loader from 'react-spinners/HashLoader';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const TEXT_REGEX = /^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -19,34 +19,34 @@ const Register = () => {
   const errRef = useRef();
 
   const [loading, setLoading] = useState(false);
-  const [textBtn, setTextBtn] = useState("Submit");
+  const [textBtn, setTextBtn] = useState('Submit');
 
-  const [fullName, setFullName] = useState("");
+  const [fullName, setFullName] = useState('');
   const [validFullName, setValidFullName] = useState(false);
   const [fullNameFocus, setFullNameFocus] = useState(false);
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [validEmail, setValidEmail] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
 
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState('');
   const [validCity, setValidCity] = useState(false);
   const [cityFocus, setCityFocus] = useState(false);
 
-  const [dob, setDob] = useState("");
+  const [dob, setDob] = useState('');
   const [validDob, setValidDob] = useState(false);
   const [dobFocus, setDobFocus] = useState(false);
 
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState('');
   const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
 
-  const [matchPwd, setMatchPwd] = useState("");
+  const [matchPwd, setMatchPwd] = useState('');
   const [validMatch, setValidMatch] = useState(false);
   const [matchFocus, setMatchFocus] = useState(false);
 
-  const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState("");
+  const [errMsg, setErrMsg] = useState('');
+  const [success, setSuccess] = useState('');
 
   useEffect(() => {
     userRef.current.focus();
@@ -64,7 +64,7 @@ const Register = () => {
 
   useEffect(() => {
     let result = null;
-    if (city === "") {
+    if (city === '') {
       result = false;
     } else result = true;
     setValidCity(result);
@@ -72,7 +72,7 @@ const Register = () => {
 
   useEffect(() => {
     let result = null;
-    if (dob === "") {
+    if (dob === '') {
       result = false;
     } else result = true;
     setValidDob(result);
@@ -86,7 +86,7 @@ const Register = () => {
   }, [password, matchPwd]);
 
   useEffect(() => {
-    setErrMsg("");
+    setErrMsg('');
   }, [email, password, matchPwd]);
 
   const handlerSubmit = async (e) => {
@@ -94,7 +94,7 @@ const Register = () => {
     const v1 = EMAIL_REGEX.test(email);
     const v2 = PWD_REGEX.test(password);
     if (!v1 | !v2) {
-      setErrMsg("Invalid Entry");
+      setErrMsg('Invalid Entry');
       return;
     }
 
@@ -107,20 +107,20 @@ const Register = () => {
     };
 
     try {
-      const response = await axios.post("/auth/signup", dataRegis);
+      const response = await axios.post('/auth/signup', dataRegis);
       setLoading(true);
       setTimeout(() => {
         setLoading(false);
-        setTextBtn("Done");
+        setTextBtn('Done');
       }, 3000);
       setTimeout(() => {
         setSuccess(true);
       }, 3500);
     } catch (err) {
       if (!err?.response) {
-        setErrMsg("No Server Response");
+        setErrMsg('No Server Response');
       } else if (err.response?.status === 409) {
-        setErrMsg("Registration Failed");
+        setErrMsg('Registration Failed');
       }
       errRef.current.focus();
     }
@@ -134,7 +134,7 @@ const Register = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.75, ease: "easeOut" }}
+          transition={{ duration: 0.75, ease: 'easeOut' }}
         >
           <Head>
             <title>Game Nation - Register</title>
@@ -163,20 +163,24 @@ const Register = () => {
             initial={{ opacity: 0.2 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0.5 }}
-            transition={{ duration: 1.75, ease: "easeOut" }}
+            transition={{ duration: 1.75, ease: 'easeOut' }}
           >
             <Head>
               <title>Game Nation - Register</title>
               <meta name="description" content="Login Page" />
             </Head>
-            <img src="/asset/logo-gn.png" alt="logo" className="w-[150px]" />
+            <img
+              src="/asset/logo-gn.png"
+              alt="logo"
+              className="w-[150px] mt-[50px] "
+            />
             <div className="flex flex-col lg:min-h-[720px] lg:my-auto">
               <p
                 ref={errRef}
                 className={
                   errMsg
-                    ? "reg-errmsg font-bold text-red-600 absolute z-50 text-center ml-[40px] mt-[380px] lg:mt-[275px] lg:ml-[220px]"
-                    : "hidden"
+                    ? 'reg-errmsg font-bold text-red-600 absolute z-50 text-center ml-[40px] mt-[380px] lg:mt-[275px] lg:ml-[220px]'
+                    : 'hidden'
                 }
                 aria-live="assertive"
               >
@@ -196,7 +200,7 @@ const Register = () => {
                       Full Name:
                       <span
                         className={
-                          validFullName ? "text-green-400 ml-1" : "hidden"
+                          validFullName ? 'text-green-400 ml-1' : 'hidden'
                         }
                       >
                         <FontAwesomeIcon icon={faCheck} />
@@ -204,8 +208,8 @@ const Register = () => {
                       <span
                         className={
                           validFullName || !fullName
-                            ? "hidden "
-                            : " text-red-500 ml-1"
+                            ? 'hidden '
+                            : ' text-red-500 ml-1'
                         }
                       >
                         <FontAwesomeIcon icon={faTimes} />
@@ -220,7 +224,7 @@ const Register = () => {
                       autoComplete="off"
                       onChange={(e) => setFullName(e.target.value)}
                       required
-                      aria-invalid={validFullName ? "false" : "true"}
+                      aria-invalid={validFullName ? 'false' : 'true'}
                       aria-describedby="uidnote"
                       onFocus={() => setFullNameFocus(true)}
                       onBlur={() => setFullNameFocus(false)}
@@ -229,8 +233,8 @@ const Register = () => {
                       id="uidnote"
                       className={
                         fullNameFocus && fullName && !validFullName
-                          ? "relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1"
-                          : "hidden"
+                          ? 'relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1'
+                          : 'hidden'
                       }
                     >
                       <FontAwesomeIcon icon={faInfoCircle} className="mr-1" />
@@ -240,14 +244,14 @@ const Register = () => {
                       Email:
                       <span
                         className={
-                          validEmail ? "text-green-400 ml-1" : "hidden"
+                          validEmail ? 'text-green-400 ml-1' : 'hidden'
                         }
                       >
                         <FontAwesomeIcon icon={faCheck} />
                       </span>
                       <span
                         className={
-                          validEmail || !email ? "hidden" : "text-red-500 ml-1"
+                          validEmail || !email ? 'hidden' : 'text-red-500 ml-1'
                         }
                       >
                         <FontAwesomeIcon icon={faTimes} />
@@ -262,7 +266,7 @@ const Register = () => {
                       autoComplete="off"
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      aria-invalid={validEmail ? "false" : "true"}
+                      aria-invalid={validEmail ? 'false' : 'true'}
                       aria-describedby="uidnote"
                       onFocus={() => setEmailFocus(true)}
                       onBlur={() => setEmailFocus(false)}
@@ -272,24 +276,24 @@ const Register = () => {
                       id="uidnote"
                       className={
                         emailFocus && email && !validEmail
-                          ? "relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1"
-                          : "hidden"
+                          ? 'relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1'
+                          : 'hidden'
                       }
                     >
-                      <FontAwesomeIcon icon={faInfoCircle} className="mr-1" />{" "}
+                      <FontAwesomeIcon icon={faInfoCircle} className="mr-1" />{' '}
                       Please input your email correctly
                     </p>
 
                     <label htmlFor="city" className="text-white">
                       City:
                       <span
-                        className={validCity ? "text-green-400 ml-1" : "hidden"}
+                        className={validCity ? 'text-green-400 ml-1' : 'hidden'}
                       >
                         <FontAwesomeIcon icon={faCheck} />
                       </span>
                       <span
                         className={
-                          validCity || !city ? "hidden" : "text-red-500 ml-1"
+                          validCity || !city ? 'hidden' : 'text-red-500 ml-1'
                         }
                       >
                         <FontAwesomeIcon icon={faTimes} />
@@ -304,7 +308,7 @@ const Register = () => {
                       autoComplete="off"
                       onChange={(e) => setCity(e.target.value)}
                       required
-                      aria-invalid={validCity ? "false" : "true"}
+                      aria-invalid={validCity ? 'false' : 'true'}
                       aria-describedby="uidnote"
                       onFocus={() => setCityFocus(true)}
                       onBlur={() => setCityFocus(false)}
@@ -313,8 +317,8 @@ const Register = () => {
                       id="uidnote"
                       className={
                         cityFocus && city && !validCity
-                          ? "relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1"
-                          : "hidden"
+                          ? 'relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1'
+                          : 'hidden'
                       }
                     >
                       <FontAwesomeIcon icon={faInfoCircle} className="mr-1" /> 4
@@ -330,13 +334,13 @@ const Register = () => {
                     <label htmlFor="dob" className="text-white">
                       Date of Birth:
                       <span
-                        className={validDob ? "text-green-400 ml-1" : "hidden"}
+                        className={validDob ? 'text-green-400 ml-1' : 'hidden'}
                       >
                         <FontAwesomeIcon icon={faCheck} />
                       </span>
                       <span
                         className={
-                          validDob || !dob ? "hidden" : "text-red-500 ml-1"
+                          validDob || !dob ? 'hidden' : 'text-red-500 ml-1'
                         }
                       >
                         <FontAwesomeIcon icon={faTimes} />
@@ -351,7 +355,7 @@ const Register = () => {
                       autoComplete="off"
                       onChange={(e) => setDob(e.target.value)}
                       required
-                      aria-invalid={validDob ? "false" : "true"}
+                      aria-invalid={validDob ? 'false' : 'true'}
                       aria-describedby="uidnote"
                       onFocus={() => setDobFocus(true)}
                       onBlur={() => setDobFocus(false)}
@@ -360,8 +364,8 @@ const Register = () => {
                       id="uidnote"
                       className={
                         dobFocus && dob && !validDob
-                          ? "relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1"
-                          : "hidden"
+                          ? 'relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1'
+                          : 'hidden'
                       }
                     >
                       <FontAwesomeIcon icon={faInfoCircle} className="mr-1" /> 4
@@ -375,13 +379,13 @@ const Register = () => {
                     <label htmlFor="password" className="text-white">
                       Password:
                       <span
-                        className={validPwd ? "text-green-400 ml-1" : "hidden"}
+                        className={validPwd ? 'text-green-400 ml-1' : 'hidden'}
                       >
                         <FontAwesomeIcon icon={faCheck} />
                       </span>
                       <span
                         className={
-                          validPwd || !password ? "hidden" : "text-red-500 ml-1"
+                          validPwd || !password ? 'hidden' : 'text-red-500 ml-1'
                         }
                       >
                         <FontAwesomeIcon icon={faTimes} />
@@ -395,7 +399,7 @@ const Register = () => {
                       name="password"
                       onChange={(e) => setPassword(e.target.value)}
                       required
-                      aria-invalid={validPwd ? "false" : "true"}
+                      aria-invalid={validPwd ? 'false' : 'true'}
                       aria-describedby="pwdnote"
                       onFocus={() => setPwdFocus(true)}
                       onBlur={() => setPwdFocus(false)}
@@ -404,8 +408,8 @@ const Register = () => {
                       id="pwdnote"
                       className={
                         pwdFocus && !validPwd
-                          ? "relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1"
-                          : "hidden"
+                          ? 'relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1'
+                          : 'hidden'
                       }
                     >
                       <FontAwesomeIcon icon={faInfoCircle} className="mr-1" />8
@@ -416,8 +420,8 @@ const Register = () => {
                       <br />
                       Allowed special characters:
                       <span aria-label="exclamation mark">!</span>
-                      <span aria-label="at symbol">@</span>{" "}
-                      <span aria-label="hashtag">#</span>{" "}
+                      <span aria-label="at symbol">@</span>{' '}
+                      <span aria-label="hashtag">#</span>{' '}
                       <span aria-label="percent">%</span>
                     </p>
 
@@ -426,8 +430,8 @@ const Register = () => {
                       <span
                         className={
                           validMatch && matchPwd
-                            ? "text-green-400 ml-1"
-                            : "hidden"
+                            ? 'text-green-400 ml-1'
+                            : 'hidden'
                         }
                       >
                         <FontAwesomeIcon icon={faCheck} />
@@ -435,8 +439,8 @@ const Register = () => {
                       <span
                         className={
                           validMatch || !matchPwd
-                            ? "hidden"
-                            : "text-red-500 ml-1"
+                            ? 'hidden'
+                            : 'text-red-500 ml-1'
                         }
                       >
                         <FontAwesomeIcon icon={faTimes} />
@@ -449,7 +453,7 @@ const Register = () => {
                       name="confirm_pwd"
                       onChange={(e) => setMatchPwd(e.target.value)}
                       required
-                      aria-invalid={validMatch ? "false" : "true"}
+                      aria-invalid={validMatch ? 'false' : 'true'}
                       aria-describedby="confirmnote"
                       onFocus={() => setMatchFocus(true)}
                       onBlur={() => setMatchFocus(false)}
@@ -458,8 +462,8 @@ const Register = () => {
                       id="confirmnote"
                       className={
                         matchFocus && !validMatch
-                          ? "relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1"
-                          : "hidden"
+                          ? 'relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1'
+                          : 'hidden'
                       }
                     >
                       <FontAwesomeIcon icon={faInfoCircle} className="mr-1" />
@@ -482,7 +486,7 @@ const Register = () => {
                       {loading ? (
                         <div className="ml-4 lg:ml-6">
                           <Loader
-                            color={"#ffff32"}
+                            color={'#ffff32'}
                             loading={loading}
                             size={20}
                             aria-label="Loading Spinner"
@@ -499,7 +503,7 @@ const Register = () => {
                   Already registered?&nbsp;
                   <span className="line">
                     <a href="/login" className="text-white">
-                      {" "}
+                      {' '}
                       Sign In
                     </a>
                   </span>

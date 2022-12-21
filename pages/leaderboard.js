@@ -1,7 +1,7 @@
-import React from "react";
-import Datauser from "../components/datauser";
-import Head from "next/head";
-import { Leaderboard } from "../components/database";
+import React from 'react';
+import Datauser from '../components/datauser';
+import Head from 'next/head';
+import { Leaderboard } from '../components/database';
 
 const Board = () => {
   return (
@@ -45,20 +45,20 @@ const Board = () => {
           </div>
         </div>
 
-        <Datauser Leaderboard={sortUser(Leaderboard)} />
+        <Datauser />
       </div>
     </section>
   );
 };
 
-function sortUser(data) {
-  return data.sort((a, b) => {
-    if (a.score === b.score) {
-      return b.score - a.score;
-    } else {
-      return b.score - a.score;
-    }
-  });
-}
+// function sortUser(data) {
+//   return data.sort((a, b) => {
+//     if (a.score === b.score) {
+//       return b.score - a.score;
+//     } else {
+//       return b.score - a.score;
+//     }
+//   });
+// }
 
 export default Board;

@@ -1,43 +1,77 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import Loader from "react-spinners/HashLoader";
-import axios from "../api/axios";
-import Head from "next/head";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Loader from 'react-spinners/HashLoader';
+import axios from '../api/axios';
+import Head from 'next/head';
+import { useSelector } from 'react-redux';
+import jsPDF from 'jspdf';
+import { autoTable } from 'jspdf-autotable';
+import { Leaderboard } from '../../components/database';
 
 const Profile = () => {
   const tokenJwt = useSelector((state) => state.jwt);
   const router = useRouter();
   const { profileId } = router.query;
-
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({});
-  // const [token, setToken] = useState("");
-  const [id, setId] = useState("");
-  const history = user.GameHistories;
+  const [id, setId] = useState('');
+  // const history = user.GameHistories;
+  const history = true;
+
+  //Dummy Data
+  const nameDummy = 'Made';
+  const emailDummy = 'madedevs@gmail.com';
+  const cityDummy = 'Bekasi';
+  const dobDummy = '12 August 1994';
+  const titleDummy = 'Rock Paper Scissors';
+  const dateDummy = '21 December 2022';
+  let info = [];
+
+  Leaderboard.forEach((element, index, array) => {
+    info.push([element.name, element.date, element.title]);
+  });
 
   useEffect(() => {
-    // const getToken = localStorage.getItem("token");
-    const getId = localStorage.getItem("id");
+    const getId = localStorage.getItem('id');
     setId(getId);
-    // setToken(getToken);
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 4000);
   }, [profileId]);
 
-  useEffect(() => {
-    if (!router.isReady) return;
-    axios
-      .get("/user/profile/" + profileId, {
-        headers: { Authorization: tokenJwt.tokenJwt },
-      })
-      .then((user) => {
-        setUser(user.data.data);
-      })
-      .catch((err) => router.push("/login"));
-  }, [router.isReady]);
+  // useEffect(() => {
+  //   if (!router.isReady) return;
+  //   axios
+  //     .get("/user/profile/" + profileId, {
+  //       headers: { Authorization: tokenJwt.tokenJwt },
+  //     })
+  //     .then((user) => {
+  //       setUser(user.data.data);
+  //     })
+  //     .catch((err) => router.push("/login"));
+  // }, [router.isReady]);
+
+  const pdfGenerate = () => {
+    let doc = new jsPDF('portrait', 'px', 'a4', 'false');
+    doc.setFont('Helvetica', 'bold');
+    doc.text(130, 60, 'Name');
+    doc.text(130, 80, 'Email');
+    doc.text(130, 100, 'City');
+    doc.text(130, 120, 'DoB');
+    doc.setFont('Helvetica', 'normal');
+    doc.text(180, 60, nameDummy);
+    doc.text(180, 80, emailDummy);
+    doc.text(180, 100, cityDummy);
+    doc.text(180, 120, dobDummy);
+    doc.autoTable({
+      startY: 150,
+      head: [['Name', 'Date', 'Title']],
+      body: info,
+    });
+
+    doc.save('profile.pdf');
+  };
 
   return (
     <>
@@ -61,7 +95,7 @@ const Profile = () => {
         {loading ? (
           <div className="flex flex-col items-center ml-[-10px] mt-[-40px]">
             <Loader
-              color={"#0b1c0f"}
+              color={'#0b1c0f'}
               loading={loading}
               size={100}
               aria-label="Loading Spinner"
@@ -83,15 +117,19 @@ const Profile = () => {
                 <span className="absolute inset-0 w-full h-full bg-slate-600 border-2 border-black "></span>
                 <span className="relative text-white">
                   <div className="text-sm md:text-lg mx-5 md:mx-20 mt-[30px] ">
-                    <p className=" font-medium">Full Name: {user.full_name}</p>
+                    {/* <p className=" font-medium">Full Name: {user.full_name}</p>
                     <p className=" font-medium mt-4">Email: {user.email}</p>
                     <p className=" font-medium mt-4">City: {user.city}</p>
-                    <p className=" font-medium mt-4">DoB: {user.dob}</p>
+                    <p className=" font-medium mt-4">DoB: {user.dob}</p> */}
+                    <p className=" font-medium">Full Name: {nameDummy}</p>
+                    <p className=" font-medium mt-4">Email: {emailDummy}</p>
+                    <p className=" font-medium mt-4">City: {cityDummy}</p>
+                    <p className=" font-medium mt-4">DoB: {dobDummy}</p>
                   </div>
                 </span>
               </div>
-              <a href={"/edit/" + id}>
-                <button className="absolute inline-block px-2 py-1 ml-[105px] md:ml-[255px] mt-[-70px] group  ">
+              <a href={'/edit/' + id}>
+                <button className="absolute inline-block px-2 py-1 ml-[105px] md:ml-[185px] mt-[-100px] md:mt-[-70px] group  ">
                   <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
                   <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
                   <span className="relative text-black text-sm md:text-md group-hover:text-white">
@@ -99,47 +137,76 @@ const Profile = () => {
                   </span>
                 </button>
               </a>
+              <button
+                onClick={pdfGenerate}
+                className="absolute inline-block px-2 py-1 ml-[93px] md:ml-[285px] mt-[255px] md:mt-[251px] group  "
+              >
+                <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+                <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
+                <span className="relative text-black text-sm md:text-md group-hover:text-white">
+                  Download PDF
+                </span>
+              </button>
 
-              <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
+              <div className="overflow-x-auto relative mt-3 shadow-md sm:rounded-lg">
                 <h3 className="text-center text-xl mt-2">Game History</h3>
                 {!history ? (
                   <h3 className="text-center">No Record</h3>
                 ) : (
-                  <table className="w-full text-sm text-left text-gray-500 mt-3">
-                    <thead className="text-xs uppercase   bg-gray-700  text-gray-400 text-center">
-                      <tr>
-                        <th scope="col" className="py-3 px-6">
-                          Name
-                        </th>
-                        <th scope="col" className="py-3 px-6">
-                          Date
-                        </th>
-                        <th scope="col" className="py-3 px-6">
-                          Game
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="text-center">
-                      {history &&
-                        history.map((result, i) => {
+                  <div>
+                    <table className="w-full text-sm text-left text-gray-500 mt-3">
+                      <thead className="text-xs uppercase   bg-gray-700  text-gray-400 text-center">
+                        <tr>
+                          <th scope="col" className="py-3 px-6">
+                            Name
+                          </th>
+                          <th scope="col" className="py-3 px-6">
+                            Date
+                          </th>
+                          <th scope="col" className="py-3 px-6">
+                            Game
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="text-center">
+                        {Leaderboard.map((result, i) => {
                           return (
                             <tr
-                              key={i}
+                              // key={i}
                               className="border-b bg-gray-800 border-gray-700  hover:bg-gray-600"
                             >
                               <th
                                 scope="row"
                                 className="py-4 px-6 font-medium whitespace-nowrap text-white"
                               >
-                                {user.full_name}
+                                {result.name}
                               </th>
-                              <td className="py-4 px-6">{result.gameplay}</td>
-                              <td className="py-4 px-6">{result.game_title}</td>
+                              <td className="py-4 px-6">{result.date}</td>
+                              <td className="py-4 px-6">{result.title}</td>
                             </tr>
                           );
                         })}
-                    </tbody>
-                  </table>
+                        {/* {history &&
+                        history.map((result, i) => {
+                          return (
+                            <tr
+                            key={i}
+                            className="border-b bg-gray-800 border-gray-700  hover:bg-gray-600"
+                            >
+                            <th
+                            scope="row"
+                            className="py-4 px-6 font-medium whitespace-nowrap text-white"
+                            >
+                            {user.full_name}
+                            </th>
+                            <td className="py-4 px-6">{result.gameplay}</td>
+                            <td className="py-4 px-6">{result.game_title}</td>
+                            </tr>
+                            );
+                          })} */}
+                      </tbody>
+                    </table>
+                  </div>
                 )}
               </div>
             </div>
