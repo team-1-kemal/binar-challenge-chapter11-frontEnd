@@ -1,15 +1,15 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from 'react';
 // import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   faCheck,
   faTimes,
   faInfoCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRouter } from "next/router";
-import Head from "next/head";
-import axios from "../api/axios";
-import { useSelector } from "react-redux";
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
+import axios from '../api/axios';
+import { useSelector } from 'react-redux';
 
 const TEXT_REGEX = /^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
@@ -23,46 +23,46 @@ const Edit = () => {
   const { userId } = router.query;
 
   // const [token, setToken] = useState("");
-  const [id, setId] = useState("");
+  const [id, setId] = useState('');
 
-  const [fullName, setFullName] = useState("");
+  const [fullName, setFullName] = useState('');
   const [userValue, setUserValue] = useState({});
   const [validFullName, setValidFullName] = useState(false);
   const [fullNameFocus, setFullNameFocus] = useState(false);
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [validEmail, setValidEmail] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
 
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState('');
   const [validCity, setValidCity] = useState(false);
   const [cityFocus, setCityFocus] = useState(false);
 
-  const [dob, setDob] = useState("");
+  const [dob, setDob] = useState('');
   const [validDob, setValidDob] = useState(false);
   const [dobFocus, setDobFocus] = useState(false);
 
-  const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState("");
+  const [errMsg, setErrMsg] = useState('');
+  const [success, setSuccess] = useState('');
 
   useEffect(() => {
     // const tokenValue = localStorage.getItem("token");
-    const getId = localStorage.getItem("id");
+    const getId = localStorage.getItem('id');
     setId(getId);
     // setToken(tokenValue);
   }, [userId]);
 
   useEffect(() => {
-    userRef.current.focus(); 
+    userRef.current.focus();
     if (!router.isReady) return;
     axios
-      .get("/user/profile/" + userId, {
+      .get('/user/profile/' + userId, {
         headers: { Authorization: tokenJwt.tokenJwt },
       })
       .then((user) => {
         setUserValue(user.data.data);
       })
-      .catch((err) => router.push("/login"));
+      .catch((err) => router.push('/login'));
   }, [router.isReady]);
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const Edit = () => {
 
   useEffect(() => {
     let result = null;
-    if (city === "") {
+    if (city === '') {
       result = false;
     } else result = true;
     setValidCity(result);
@@ -85,21 +85,21 @@ const Edit = () => {
 
   useEffect(() => {
     let result = null;
-    if (dob === "") {
+    if (dob === '') {
       result = false;
     } else result = true;
     setValidDob(result);
   }, [dob]);
 
   useEffect(() => {
-    setErrMsg("");
+    setErrMsg('');
   }, [email]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const v1 = EMAIL_REGEX.test(email);
     if (!v1) {
-      setErrMsg("Invalid Entry");
+      setErrMsg('Invalid Entry');
       return;
     }
 
@@ -110,7 +110,7 @@ const Edit = () => {
       dob,
     };
     axios
-      .put("/user/profile/" + id, data, {
+      .put('/user/profile/' + id, data, {
         headers: { Authorization: tokenJwt.tokenJwt },
       })
       .then((response) => {
@@ -119,11 +119,11 @@ const Edit = () => {
       })
       .catch((err) => {
         if (!err?.response) {
-          setErrMsg("No Server Response");
+          setErrMsg('No Server Response');
         } else if (err.response?.status === 409) {
-          setErrMsg("Edit Profile Failed");
+          setErrMsg('Edit Profile Failed');
         }
-        router.push("/login");
+        router.push('/login');
         errRef.current.focus();
       });
   };
@@ -145,7 +145,7 @@ const Edit = () => {
               <h1>Edit Profile Success!</h1>
               <p>
                 Go to your&nbsp;
-                <a className="text-white" href={"/profile/" + id}>
+                <a className="text-white" href={'/profile/' + id}>
                   Profile
                 </a>
               </p>
@@ -179,7 +179,7 @@ const Edit = () => {
             />
             <div
               data-id="0"
-              className=" w-[300px] h-[450px] md:h-[500px] md:w-[500px]  mx-auto relative  px-4 py-2 flex flex-col items-center font-medium group"
+              className=" w-[300px] h-[450px] md:h-[600px] md:w-[500px]  mx-auto relative  px-4 py-2 flex flex-col items-center font-medium group"
             >
               <span className="absolute inset-0 w-full h-full   translate-x-1 translate-y-1 bg-black "></span>
               <span className="absolute inset-0 w-full h-full bg-slate-600 border-2 border-black "></span>
@@ -190,8 +190,8 @@ const Edit = () => {
                       ref={errRef}
                       className={
                         errMsg
-                          ? " text-red-600 absolute z-50 text-center ml-[40px] mt-[290px] md:mt-[315px] md:ml-[90px]"
-                          : "hidden"
+                          ? ' text-red-600 absolute z-50 text-center ml-[40px] mt-[290px] md:mt-[315px] md:ml-[90px]'
+                          : 'hidden'
                       }
                       aria-live="assertive"
                     >
@@ -210,7 +210,7 @@ const Edit = () => {
                             Full Name:
                             <span
                               className={
-                                validFullName ? "text-green-400 ml-1" : "hidden"
+                                validFullName ? 'text-green-400 ml-1' : 'hidden'
                               }
                             >
                               <FontAwesomeIcon icon={faCheck} />
@@ -218,8 +218,8 @@ const Edit = () => {
                             <span
                               className={
                                 validFullName || !fullName
-                                  ? "hidden"
-                                  : "text-red-500 ml-1"
+                                  ? 'hidden'
+                                  : 'text-red-500 ml-1'
                               }
                             >
                               <FontAwesomeIcon icon={faTimes} />
@@ -228,14 +228,15 @@ const Edit = () => {
                           <input
                             type="text"
                             id="fullName"
+                            value={userValue.full_name}
                             className=" text-black w-[250px] h-[30px] md:w-[280px] md:h-[35px] rounded p-2"
                             name="fullName"
                             ref={userRef}
                             autoComplete="off"
-                            placeholder={userValue.full_name || ""}
+                            placeholder={userValue.full_name || ''}
                             onChange={(e) => setFullName(e.target.value)}
                             required
-                            aria-invalid={validFullName ? "false" : "true"}
+                            aria-invalid={validFullName ? 'false' : 'true'}
                             aria-describedby="uidnote"
                             onFocus={() => setFullNameFocus(true)}
                             onBlur={() => setFullNameFocus(false)}
@@ -244,8 +245,8 @@ const Edit = () => {
                             id="uidnote"
                             className={
                               fullNameFocus && fullName && !validFullName
-                                ? "relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1"
-                                : "hidden"
+                                ? 'relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1'
+                                : 'hidden'
                             }
                           >
                             <FontAwesomeIcon icon={faInfoCircle} />
@@ -255,7 +256,7 @@ const Edit = () => {
                             Email:
                             <span
                               className={
-                                validEmail ? "text-green-400 ml-1" : "hidden"
+                                validEmail ? 'text-green-400 ml-1' : 'hidden'
                               }
                             >
                               <FontAwesomeIcon icon={faCheck} />
@@ -263,8 +264,8 @@ const Edit = () => {
                             <span
                               className={
                                 validEmail || !email
-                                  ? "hidden"
-                                  : "text-red-500 ml-1"
+                                  ? 'hidden'
+                                  : 'text-red-500 ml-1'
                               }
                             >
                               <FontAwesomeIcon icon={faTimes} />
@@ -274,13 +275,14 @@ const Edit = () => {
                           <input
                             type="email"
                             id="email"
+                            value={userValue.email}
                             className="text-black w-[250px] h-[30px] md:w-[280px] md:h-[35px] rounded p-2"
                             name="email"
                             autoComplete="off"
-                            placeholder={userValue.email || ""}
+                            placeholder={userValue.email || ''}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            aria-invalid={validEmail ? "false" : "true"}
+                            aria-invalid={validEmail ? 'false' : 'true'}
                             aria-describedby="uidnote"
                             onFocus={() => setEmailFocus(true)}
                             onBlur={() => setEmailFocus(false)}
@@ -290,8 +292,8 @@ const Edit = () => {
                             id="uidnote"
                             className={
                               emailFocus && email && !validEmail
-                                ? "relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1"
-                                : "hidden"
+                                ? 'relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1'
+                                : 'hidden'
                             }
                           >
                             <FontAwesomeIcon icon={faInfoCircle} /> Please input
@@ -302,7 +304,7 @@ const Edit = () => {
                             City:
                             <span
                               className={
-                                validCity ? "text-green-400 ml-1" : "hidden"
+                                validCity ? 'text-green-400 ml-1' : 'hidden'
                               }
                             >
                               <FontAwesomeIcon icon={faCheck} />
@@ -310,8 +312,8 @@ const Edit = () => {
                             <span
                               className={
                                 validCity || !city
-                                  ? "hidden"
-                                  : "text-red-500 ml-1"
+                                  ? 'hidden'
+                                  : 'text-red-500 ml-1'
                               }
                             >
                               <FontAwesomeIcon icon={faTimes} />
@@ -321,13 +323,14 @@ const Edit = () => {
                           <input
                             type="text"
                             id="city"
+                            value={userValue.city}
                             className="text-black w-[250px] h-[30px] md:w-[280px] md:h-[35px] rounded p-2"
                             name="city"
                             autoComplete="off"
-                            placeholder={userValue.city || ""}
+                            placeholder={userValue.city || ''}
                             onChange={(e) => setCity(e.target.value)}
                             required
-                            aria-invalid={validCity ? "false" : "true"}
+                            aria-invalid={validCity ? 'false' : 'true'}
                             aria-describedby="uidnote"
                             onFocus={() => setCityFocus(true)}
                             onBlur={() => setCityFocus(false)}
@@ -336,8 +339,8 @@ const Edit = () => {
                             id="uidnote"
                             className={
                               cityFocus && city && !validCity
-                                ? "relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1"
-                                : "hidden"
+                                ? 'relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1'
+                                : 'hidden'
                             }
                           >
                             <FontAwesomeIcon icon={faInfoCircle} /> 4 to 24
@@ -352,7 +355,7 @@ const Edit = () => {
                             Date of Birth:
                             <span
                               className={
-                                validDob ? "text-green-400 ml-1" : "hidden"
+                                validDob ? 'text-green-400 ml-1' : 'hidden'
                               }
                             >
                               <FontAwesomeIcon icon={faCheck} />
@@ -360,8 +363,8 @@ const Edit = () => {
                             <span
                               className={
                                 validDob || !dob
-                                  ? "hidden"
-                                  : "text-red-500 ml-1"
+                                  ? 'hidden'
+                                  : 'text-red-500 ml-1'
                               }
                             >
                               <FontAwesomeIcon icon={faTimes} />
@@ -371,13 +374,14 @@ const Edit = () => {
                           <input
                             type="date"
                             id="dob"
+                            value={userValue.dob}
                             className="text-black w-[250px] h-[30px] md:w-[280px] md:h-[35px] rounded p-2"
                             name="dob"
                             autoComplete="off"
-                            placeholder={userValue.dob || ""}
+                            placeholder={userValue.dob || ''}
                             onChange={(e) => setDob(e.target.value)}
                             required
-                            aria-invalid={validDob ? "false" : "true"}
+                            aria-invalid={validDob ? 'false' : 'true'}
                             aria-describedby="uidnote"
                             onFocus={() => setDobFocus(true)}
                             onBlur={() => setDobFocus(false)}
@@ -386,8 +390,8 @@ const Edit = () => {
                             id="uidnote"
                             className={
                               dobFocus && dob && !validDob
-                                ? "relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1"
-                                : "hidden"
+                                ? 'relative max-w-[250px] text-[10px] rounded-[8px] text-white bg-black p-1'
+                                : 'hidden'
                             }
                           >
                             <FontAwesomeIcon icon={faInfoCircle} /> 4 to 24
@@ -397,6 +401,17 @@ const Edit = () => {
                             <br />
                             Letters, numbers, underscores, hypens allowed.
                           </p>
+                          <div>
+                            <label htmlFor="formFile" className="form-label">
+                              Upload Image Here
+                            </label>
+                            <input
+                              type="file"
+                              className="form-control"
+                              id="formfile"
+                              accept="image"
+                            />
+                          </div>
                         </div>
 
                         <div className="form"></div>
